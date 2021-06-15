@@ -1,0 +1,184 @@
+/* RESET */
+body{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: #ECEBEB;
+    font-family: "Poppins";
+}
+
+.center-h{
+    display: flex;
+    justify-content: center;
+}
+
+.margin-container{
+    margin: auto;
+    width: 92%;
+}
+
+.line-h{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* contenedor principal */
+.principal-container{
+    margin: auto;
+    margin-top: 20px;
+    width: 60%;
+    /* height: 96vh; */
+    background-color: white;
+    box-shadow: 0, 0, 0, 0.5;
+    border-radius: 10px;
+
+}
+
+/* titulo */
+.title{
+    display: flex;
+    justify-content: center;
+}
+
+/* boton de crear nuvo usuario */
+.button-new-car{
+    margin-top: 50px;
+}
+
+.button-new-car button{
+    border: 0;
+    padding: 15px;
+    background-color: #198CD3;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #ECEBEB;
+    cursor: pointer;
+}
+
+.button-new-car button:hover{
+    background-color: #1B9FF0;
+}
+
+/* formulario */
+.inputs-form{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input{
+    width: 50%;
+    margin: 10px 0px;
+}
+
+.input input{
+    width: 90%;
+    height: 30px;
+    border: solid 2px #E7E7E7;
+    border-radius: 5px;
+}
+
+
+/* boton de enviar guardar info */
+.button-save{
+    border: 0;
+    padding: 15px;
+    background-color: #2FA008;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #ECEBEB;
+    cursor: pointer;
+    width: 80%;
+    margin-top: 30px;  
+}
+
+.button-save:hover{
+    background-color: #3ace09;
+    box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* toggle */
+.toggle-new-car{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s;
+}
+
+.open{
+    max-height: 400px;
+}
+
+#menuToggle{
+    margin-bottom: 30px;
+}
+
+
+/* estylos para elementos creados */
+
+.carItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #F6F6F6;
+}
+
+.infoCar {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonsAC {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.update{
+    color: #DEDEDE;
+    background-color: #198CD3;
+    border: solid 1px #DEDEDE;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.update:hover{
+    background-color: #1B9FF0;
+}
+
+.delete{
+    color: #DEDEDE;
+    background-color: #D41607;
+    border: solid 1px #DEDEDE;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.delete:hover{
+    background-color: #ee3629 ;
+}
+
+.infoCar h2{
+    color: #1B9FF0;
+}
+
+.titles-crud{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.hr{
+    border-bottom: solid 2px #000;
+}
+
+

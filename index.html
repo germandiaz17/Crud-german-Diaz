@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <title>Crud-German</title>
+</head>
+<body>
+    
+    <!-- contenedor principal -->
+    <div class="principal-container">
+        <div class="margin-container">
+
+            <!-- titulo -->
+            <div class="title"> <h1>CRUD - German Diaz</h1> </div>
+
+
+            <!-- boton para crear un nuevo registro de auto -->
+            <div class="button-new-car">
+                <button id="menuToggle" onclick="toggleForm()">Create New Car</button>
+            </div>
+
+
+            <!-- formulario de creacion de registro de auto -->
+            <div id="formMenu" class="toggle-new-car">
+
+                <form id="addCar">
+                    <div class="inputs-form">
+                        <!-- marca del carro -->
+                        <div class="input">
+                            <label for="nameOfCar">Name: </label>
+                            <input type="text" id="nameOfCar" placeholder="Name" required>
+                        </div>
+
+                        <!-- modelo del auto -->
+                        <div class="input">
+                            <label for="modelOfCar">Model: </label>
+                            <input type="number" id="modelOfCar" placeholder="Model of car" required>
+                        </div>
+
+                        <!-- numero de puertas del auto -->
+                        <div class="input">
+                            <label for="doors">Doors: </label><br>
+                            <input type="number" id="doors" placeholder="Doors" required>
+                        </div>
+
+                        <!-- color del auto -->
+                        <div class="input">
+                            <label for="colorCar">color: </label><br>
+                            <input type="text" id="colorCar" placeholder="Color of car" required>
+                        </div>
+
+                        <!-- brand del auto -->
+                        <div class="input">
+                            <label for="brandOfCar">Brand: </label>
+                            <input type="text" id="brandOfCar" placeholder="Brand of car" required>
+                        </div>
+
+                    </div>
+                    <div class="center-h">
+                        <button type="submit" class="button-save">Save Record</button>
+                    </div>
+                    <hr class="line-h">
+                </form>
+            </div>
+
+
+            <div>
+                <div class="titles-crud">
+                    <div class="infoCar hr">
+                        <h2>Name</h2>
+                        <h2>Model</h2>
+                        <h2>Doors</h2>
+                        <h2>Color</h2>
+                        <h2>Brand</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="newRegister"></div>
+        </div>
+    </div>
+    <script src="./javaScript/main.js"></script>
+</body>
+</html>
