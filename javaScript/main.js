@@ -1,11 +1,11 @@
 let cars = [
-    {
-      name: "Mazda 2",
-      model: "2019",
-      doors: 5,
-      color: "red",
-      brand: "mazda"
-    }
+    // {
+    //   name: "Mazda 2",
+    //   model: "2019",
+    //   doors: 5,
+    //   color: "red",
+    //   brand: "mazda"
+    // }
   ];
 
 
@@ -30,12 +30,23 @@ let conditionalCrud = false;
 let updateIndex = null;
 
 
+//local Storage
+const carStorage = () => {
+    if(typeof(Storage) != "undefined"){
+        localStorage.setItem("car", JSON.stringify(cars));
+    }else{
+        alert("ERROR");
+    }
+};
+
+
 
 //funcion principal
 const principalFunction = () => {
     
     renderListUI.innerHTML = "";
     carsList = cars;
+    carsList = JSON.parse(localStorage.getItem("car"));
 
     //forEach
     carsList.forEach((element, index) =>{
@@ -127,6 +138,7 @@ const createUpdateRegister = event => {
             brand: document.getElementById("brandOfCar").value
         };
         carsList.push(car);
+        carStorage();
         principalFunction();
     }
     saveForm.reset();
