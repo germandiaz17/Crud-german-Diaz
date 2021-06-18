@@ -1,12 +1,4 @@
-let cars = [
-    {
-      name: "Mazda 2",
-      model: "2019",
-      doors: 5,
-      color: "red",
-      brand: "mazda"
-    }
-  ];
+let cars = [];
 
 
 //funcion para hacer toggle sobre el formulario
@@ -30,74 +22,89 @@ let conditionalCrud = false;
 let updateIndex = null;
 
 
+let localCarList = JSON.parse(localStorage.getItem('newRegisterCar'));
+//localStorage
+const saveInfoNav = () => {
+    if(typeof Storage != "undefined"){
+        localStorage.setItem("newRegisterCar", JSON.stringify(cars));
+        principalFunction();
+    }else{
+        alert("Parece que ha ocurrido un Error!")
+    }
+};
+
 
 //funcion principal
 const principalFunction = () => {
     
     renderListUI.innerHTML = "";
-    carsList = cars;
+    // carsList = cars;
+    let carsList = JSON.parse(localStorage.getItem('newRegisterCar'));
+    if(carsList === null){
+        carsList = [];
+    }else {
 
-    //forEach
-    carsList.forEach((element, index) =>{
+        carsList.forEach((element, index) =>{
 
-        //contendedor items
-        let itemCar = document.createElement('div');
-        itemCar.setAttribute("class", "carItem");
-        renderListUI.appendChild(itemCar);
-
-        //contenedor info
-        let infoCar = document.createElement('div');
-        infoCar.setAttribute("class", "infoCar");
-        itemCar.appendChild(infoCar);
-
-        //inserta de informacion
-        let nameCar = document.createElement('p');
-        nameCar.innerText = `${element.name}`;
-
-        let modelCar = document.createElement('p');
-        modelCar.innerText = `${element.model}`;
-
-        let doorCar = document.createElement('p');
-        doorCar.innerText = `${element.doors}`;
-
-        let colorCar = document.createElement('p');
-        colorCar.innerText = `${element.color}`;
-
-        let brandCar = document.createElement("p");
-        brandCar.innerText = `${element.brand}`;
-
-
-        infoCar.appendChild(nameCar);
-        infoCar.appendChild(modelCar);
-        infoCar.appendChild(doorCar);
-        infoCar.appendChild(colorCar);
-        infoCar.appendChild(brandCar);
-
-
-        //crea de botones editar y borrar
-        let divButtons = document.createElement('div');
-        divButtons.setAttribute("class", "buttonsAC");
-        itemCar.append(divButtons);
-
-
-        //boton de editar
-        const updateBtn = document.createElement('button');
-        updateBtn.setAttribute("class", "update");
-        updateBtn.setAttribute("id", "update");
-        updateBtn.innerText = "Update";
-        updateBtn.addEventListener("click", () => updateRegister(element, index));
-
-        //boton de borrar
-        const deletBtn = document.createElement('button');
-        deletBtn.setAttribute('class', "delete");
-        deletBtn.setAttribute('id', 'delete');
-        deletBtn.innerText = "Delete";
-        deletBtn.addEventListener("click", () => deleteRegister(index));
-
-        //agg btn
-        divButtons.appendChild(updateBtn);
-        divButtons.appendChild(deletBtn);
-    });
+            //contendedor items
+            let itemCar = document.createElement('div');
+            itemCar.setAttribute("class", "carItem");
+            renderListUI.appendChild(itemCar);
+    
+            //contenedor info
+            let infoCar = document.createElement('div');
+            infoCar.setAttribute("class", "infoCar");
+            itemCar.appendChild(infoCar);
+    
+            //inserta de informacion
+            let nameCar = document.createElement('p');
+            nameCar.innerText = `${element.name}`;
+    
+            let modelCar = document.createElement('p');
+            modelCar.innerText = `${element.model}`;
+    
+            let doorCar = document.createElement('p');
+            doorCar.innerText = `${element.doors}`;
+    
+            let colorCar = document.createElement('p');
+            colorCar.innerText = `${element.color}`;
+    
+            let brandCar = document.createElement("p");
+            brandCar.innerText = `${element.brand}`;
+    
+    
+            infoCar.appendChild(nameCar);
+            infoCar.appendChild(modelCar);
+            infoCar.appendChild(doorCar);
+            infoCar.appendChild(colorCar);
+            infoCar.appendChild(brandCar);
+    
+    
+            //crea de botones editar y borrar
+            let divButtons = document.createElement('div');
+            divButtons.setAttribute("class", "buttonsAC");
+            itemCar.append(divButtons);
+    
+    
+            //boton de editar
+            const updateBtn = document.createElement('button');
+            updateBtn.setAttribute("class", "update");
+            updateBtn.setAttribute("id", "update");
+            updateBtn.innerText = "Update";
+            updateBtn.addEventListener("click", () => updateRegister(element, index));
+    
+            //boton de borrar
+            const deletBtn = document.createElement('button');
+            deletBtn.setAttribute('class', "delete");
+            deletBtn.setAttribute('id', 'delete');
+            deletBtn.innerText = "Delete";
+            deletBtn.addEventListener("click", () => deleteRegister(index));
+    
+            //agg btn
+            divButtons.appendChild(updateBtn);
+            divButtons.appendChild(deletBtn);
+        });
+    }
 };
 
 
@@ -126,7 +133,11 @@ const createUpdateRegister = event => {
             color: document.getElementById("colorCar").value,
             brand: document.getElementById("brandOfCar").value
         };
-        carsList.push(car);
+        if(localCarList === null){
+            localCarList = [];
+        }
+        cars.push(...localCarList, car);
+        saveInfoNav();
         principalFunction();
     }
     saveForm.reset();
@@ -146,7 +157,9 @@ let updateRegister = (element, index) => {
 
 //funcion de eliminar
 let deleteRegister = index => {
-    carsList.splice(index, 1);
+    cars = JSON.parse(localStorage.getItem('newRegisterCar'));
+    cars.splice(index, 1);
+    saveInfoNav();
     principalFunction();
 };
 
