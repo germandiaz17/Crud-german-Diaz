@@ -133,12 +133,14 @@ const createUpdateRegister = event => {
             color: document.getElementById("colorCar").value,
             brand: document.getElementById("brandOfCar").value
         };
-        if(localCarList === null){
-            localCarList = [];
+        cars = JSON.parse(localStorage.getItem('newRegisterCar'));
+        if(cars === null){
+            cars = [];
         }
-        cars.push(...localCarList, car);
+        cars.push(car);
         saveInfoNav();
         principalFunction();
+        cars = [];
     }
     saveForm.reset();
 };
